@@ -1,0 +1,22 @@
+.TechStack>div {
+    height: 1.5rem;
+    fill: white;
+}
+
+.TechStack>span {
+    color: white;
+    font-family: monospace;
+}
+
+.TechStack>span::after {
+    margin-left: 0.5rem;
+    font-size: 0.7rem;
+}
+
+.TechStack.Proficiency-0>span::after {
+    content: "(Novice)";
+}
+
+.TechStack.Proficiency-1>span::after {
+    content: "(Beginner)";
+}

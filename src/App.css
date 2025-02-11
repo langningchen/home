@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'MonospaceRadon';
+    src: url('./assets/MonaspaceRadon.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+main {
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
