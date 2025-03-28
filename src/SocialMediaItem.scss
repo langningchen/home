@@ -1,8 +1,8 @@
 .SocialMediaItem {
     filter: contrast(0);
     transition: 0.3s;
-}
 
-.SocialMediaItem:hover {
-    filter: contrast(1);
+    :hover {
+        filter: contrast(1);
+    }
 }

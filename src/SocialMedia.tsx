@@ -1,16 +1,20 @@
 import SocialMediaItem from "./SocialMediaItem"
 
-function SocialMedia() {
+interface SocialMediaProps {
+  small?: boolean;
+}
+
+function SocialMedia({ small }: SocialMediaProps) {
   return (
-    <div className="d-flex justify-content-center">
-      Contact me: &nbsp;
-      <SocialMediaItem icon="github" link="https://github.com/langningchen" />
-      <SocialMediaItem icon="wechat" qrCode="https://u.wechat.com/EMFa5zXuWLzzZ-YRf5GTX1c" text="Scan to add" />
-      <SocialMediaItem icon="envelope" link="mailto:i@langningchen.com" />
-      <SocialMediaItem icon="twitter-x" link="https://x.com/langningchen" />
-      <SocialMediaItem icon="linkedin" link="https://www.linkedin.com/in/langning-chen-b0418a348/" />
+    <div className={"d-flex justify-content-center " + (small ? "flex-row" : "flex-column")}>
+      <SocialMediaItem small={small} icon="github" link="https://github.com/langningchen" />
+      <SocialMediaItem small={small} icon="wechat" text="langningchen" />
+      <SocialMediaItem small={small} icon="envelope" text="i@langningchen.com" link="mailto:i@langningchen.com" />
+      <SocialMediaItem small={small} icon="twitter-x" link="https://x.com/langningchen" />
+      <SocialMediaItem small={small} icon="linkedin" link="https://www.linkedin.com/in/langningchen" />
+      <SocialMediaItem small={small} icon="discord" link="https://discord.com/users/1134474039767875625" />
     </div>
   )
 }
 
-export default SocialMedia
+export default SocialMedia;

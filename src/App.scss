@@ -1,3 +1,5 @@
+$primary: #8adbae;
+
 @font-face {
     font-family: 'MonospaceRadon';
     src: url('./assets/MonaspaceRadon.ttf') format('truetype');
@@ -9,3 +11,5 @@ main {
     overflow-y: scroll;
     scrollbar-width: none;
 }
+
+@import "bootstrap/scss/bootstrap.scss";

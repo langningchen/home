@@ -1,5 +1,5 @@
 import { SimpleIcon } from "simple-icons"
-import "./TechStack.css"
+import "./TechStack.scss"
 
 interface TechStackProps {
     icon: SimpleIcon;

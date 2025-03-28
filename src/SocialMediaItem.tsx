@@ -1,38 +1,19 @@
-import QRCode from "react-qr-code";
-import "./SocialMediaItem.css";
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import "./SocialMediaItem.scss";
 
-interface SocialMediaProps {
+interface SocialMediaItemProps {
     icon: string;
-    link?: string;
-    qrCode?: string;
     text?: string;
+    link?: string;
+    small?: boolean;
 }
 
-function SocialMediaItem({ icon, link, qrCode, text }: SocialMediaProps) {
-    if (link)
-        return (
-            <i className={`SocialMediaItem bi bi-${icon} mx-2`}
-                role="button"
-                onClick={() => window.open(link)}
-            ></i>
-        );
-    else if (qrCode || text) {
-        return (
-            <OverlayTrigger overlay={<Tooltip id={`tooltip-${icon}`}>
-                {qrCode && <QRCode value={qrCode} size={128} />}
-                {text && <div className="text-center">{text}</div>}
-            </Tooltip >}>
-                <i className={`SocialMediaItem bi bi-${icon} mx-2`}
-                    role="button"
-                ></i>
-            </OverlayTrigger>
-        );
-    }
-    else
-        return (
-            <i className={`SocialMediaItem bi bi-${icon} mx-2`}></i>
-        );
+function SocialMediaItem({ icon, text, link, small }: SocialMediaItemProps) {
+    return (
+        <a href={link} className="d-flex">
+            <i className={`SocialMediaItem bi bi-${icon}` + (small ? " mx-2" : " me-3")}></i>
+            {!small && <span className="flex-shrink-1 text-truncate">{text ?? link}</span>}
+        </a>
+    );
 }
 
 export default SocialMediaItem;
