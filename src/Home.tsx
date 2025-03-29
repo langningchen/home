@@ -27,7 +27,7 @@ function Home() {
             typeSpeed={30} backSpeed={20} backDelay={2000}
             loop
           />
-          <div style={{ visibility: "hidden", position: "relative", height: 0 }}>an open-source contributor|</div>
+          <div className="fs-2" style={{ visibility: "hidden", position: "relative", height: 0 }}>an open-source contributor|</div>
         </div>
         <div className="d-flex gap-5 align-items-center text-truncate">
           <div className="d-none d-md-block w-100" style={{ maxWidth: "15rem" }}>
