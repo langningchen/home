@@ -5,6 +5,7 @@ import { ReactTyped } from "react-typed"
 import { Fade } from "react-awesome-reveal"
 import Padding from "./Padding"
 import SocialMedia from "./SocialMedia"
+import EducationContainer from "./EducationContainer"
 
 function Home() {
   return (
@@ -41,6 +42,8 @@ function Home() {
       <Fade>
         <Padding />
         <TechStackContainer />
+        <Padding />
+        <EducationContainer />
       </Fade>
     </>
   )
