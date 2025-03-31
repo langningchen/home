@@ -11,7 +11,7 @@ function Home() {
   return (
     <>
       <div className="d-block d-md-none w-100 pb-3" style={{ maxWidth: "15rem" }}>
-        <Image src="/avatar.png" rounded className="w-100" />
+        <Image src="/avatar.jpg" rounded className="w-100" />
       </div>
       <div className="d-flex gap-5 flex-wrap">
         <div className="flex-grow-1">
@@ -32,7 +32,7 @@ function Home() {
         </div>
         <div className="d-flex gap-5 align-items-center text-truncate">
           <div className="d-none d-md-block w-100" style={{ maxWidth: "15rem" }}>
-            <Image src="/avatar.png" rounded className="w-100" />
+            <Image src="/avatar.jpg" rounded className="w-100" />
           </div>
           <div className="text-truncate flex-md-shrink-0 flex-shrink-1">
             <SocialMedia />

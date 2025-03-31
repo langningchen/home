@@ -31,19 +31,19 @@ function EducationContainer() {
                 <Card>
                     <Carousel>
                         <Carousel.Item>
-                            <Card.Img variant="top" src="/CYEZ-1.png" />
+                            <Card.Img variant="top" src="/CYEZ-1.jpg" />
                         </Carousel.Item>
                         <Carousel.Item>
-                            <Card.Img variant="top" src="/CYEZ-2.png" />
+                            <Card.Img variant="top" src="/CYEZ-2.jpg" />
                         </Carousel.Item>
                         <Carousel.Item>
-                            <Card.Img variant="top" src="/CYEZ-3.png" />
+                            <Card.Img variant="top" src="/CYEZ-3.jpg" />
                         </Carousel.Item>
                         <Carousel.Item>
-                            <Card.Img variant="top" src="/CYEZ-4.png" />
+                            <Card.Img variant="top" src="/CYEZ-4.jpg" />
                         </Carousel.Item>
                         <Carousel.Item>
-                            <Card.Img variant="top" src="/CYEZ-5.png" />
+                            <Card.Img variant="top" src="/CYEZ-5.jpg" />
                         </Carousel.Item>
                     </Carousel>
                     <Card.Body>
