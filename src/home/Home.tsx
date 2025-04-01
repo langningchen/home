@@ -3,9 +3,10 @@ import TechStackContainer from "./TechStackContainer"
 import "./Home.scss"
 import { ReactTyped } from "react-typed"
 import { Fade } from "react-awesome-reveal"
-import Padding from "./Padding"
-import SocialMedia from "./SocialMedia"
+import Padding from "../Padding"
+import SocialMedia from "../SocialMedia"
 import EducationContainer from "./EducationContainer"
+import Introduction from "../Introduction"
 
 function Home() {
   return (
@@ -44,6 +45,8 @@ function Home() {
         <TechStackContainer />
         <Padding />
         <EducationContainer />
+        <Padding />
+        <Introduction />
       </Fade>
     </>
   )

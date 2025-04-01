@@ -8,11 +8,21 @@ interface SocialMediaItemProps {
 }
 
 function SocialMediaItem({ icon, text, link, small }: SocialMediaItemProps) {
+    if (small) {
+        return (
+            <a href={link}>
+                <i className={`SocialMediaItem bi bi-${icon} mx-2`}></i>
+            </a>
+        );
+    }
     return (
-        <a href={link} className="d-flex">
-            <i className={`SocialMediaItem bi bi-${icon}` + (small ? " mx-2" : " me-3")}></i>
-            {!small && <span className="flex-shrink-1 text-truncate">{text ?? link}</span>}
-        </a>
+        <div className="d-flex">
+            <i className={`SocialMediaItem bi bi-${icon} me-3`}></i>
+            {
+                link ? <a href={link} className="flex-shrink-1 text-truncate">{text ?? link}</a> :
+                    <span className="text-truncate">{text}</span>
+            }
+        </div>
     );
 }
 
