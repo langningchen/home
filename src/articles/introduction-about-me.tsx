@@ -1,10 +1,8 @@
 import { Fade } from "react-awesome-reveal"
 
-function Introduction() {
+function IntroductionAboutMe() {
     return (
         <Fade>
-            <h3>Introduction</h3>
-
             <p>
                 My name is Langning Chen, and I use the username <code>langningchen</code> across most social media platforms.
                 My journey into programming began around the third grade when I started experimenting with Visual Basic Script (VBScript).
@@ -72,4 +70,8 @@ function Introduction() {
     )
 }
 
-export default Introduction
+IntroductionAboutMe.title = "Introduction: About Me";
+IntroductionAboutMe.date = "2024-01-01";
+IntroductionAboutMe.description = "Who am I? What do I do? What do I want to do? Come and read my introduction!";
+
+export default IntroductionAboutMe

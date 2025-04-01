@@ -6,7 +6,7 @@ import { Fade } from "react-awesome-reveal"
 import Padding from "../Padding"
 import SocialMedia from "../SocialMedia"
 import EducationContainer from "./EducationContainer"
-import Introduction from "../Introduction"
+import Introduction from "../articles/introduction-about-me"
 
 function Home() {
   return (
