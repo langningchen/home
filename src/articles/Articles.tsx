@@ -1,6 +1,7 @@
-import { Alert, Card } from "react-bootstrap"
+import "./Articles.scss"
+import { Card } from "react-bootstrap"
 import { Link, useNavigate, useParams } from "react-router-dom"
-import IntroductionAboutMe from "./introduction-about-me"
+import IntroductionAboutMe from "./introduction-about-me/main"
 
 const articles = {
   "introduction-about-me": IntroductionAboutMe,
@@ -21,7 +22,7 @@ function Articles() {
               }} role="button" className="mb-3">
                 <Card.Body>
                   <Card.Title>{ArticleComponent.title}</Card.Title>
-                  <Card.Subtitle>{ArticleComponent.date}</Card.Subtitle>
+                  <Card.Subtitle>{ArticleComponent.date.toLocaleDateString()}</Card.Subtitle>
                   <br />
                   <Card.Text>{ArticleComponent.description}</Card.Text>
                 </Card.Body>
@@ -46,14 +47,14 @@ function Articles() {
     )
   }
   return (
-    <>
-      <Link to="/articles"> &laquo; Back to Articles</Link>
-      <h3>{ArticleComponent.title}</h3>
-      <h6 className="mb-3">{ArticleComponent.date}</h6>
-      <Alert className="mb-5" variant="secondary">{ArticleComponent.description}</Alert>
+    <div className="Article">
+      <div className="mb-3"><Link to="/articles">&laquo; Back to Articles</Link></div>
+      <h1>{ArticleComponent.title}</h1>
+      <div className="mb-3">{ArticleComponent.date.toLocaleDateString()}</div>
+      <div className="mb-3 Introduction">{ArticleComponent.description}</div>
       <ArticleComponent />
-      <Link to="/articles"> &laquo; Back to Articles</Link>
-    </>
+      <div className="mt-3"><Link to="/articles">&laquo; Back to Articles</Link></div>
+    </div>
   )
 }
 
