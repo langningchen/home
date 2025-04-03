@@ -6,15 +6,15 @@ import { Fade } from "react-awesome-reveal"
 import Padding from "../Padding"
 import SocialMedia from "../SocialMedia"
 import EducationContainer from "./EducationContainer"
-import Introduction from "../articles/introduction-about-me"
+import StatusCards from "./StatusCards"
 
 function Home() {
   return (
     <>
-      <div className="d-block d-md-none w-100 pb-3" style={{ maxWidth: "15rem" }}>
+      <div className="d-block d-md-none pb-3" style={{ maxWidth: "15rem" }}>
         <Image src="/avatar.jpg" rounded className="w-100" />
       </div>
-      <div className="d-flex gap-5 flex-wrap">
+      <div className="d-flex justify-content-between gap-5 pb-3">
         <div className="flex-grow-1">
           <div className="fs-4">Hello! I am</div>
           <div className="fs-1 name">Langning Chen</div>
@@ -31,22 +31,19 @@ function Home() {
           />
           <div className="fs-2" style={{ visibility: "hidden", position: "relative", height: 0 }}>an open-source contributor|</div>
         </div>
-        <div className="d-flex gap-5 align-items-center text-truncate">
-          <div className="d-none d-md-block w-100" style={{ maxWidth: "15rem" }}>
-            <Image src="/avatar.jpg" rounded className="w-100" />
-          </div>
-          <div className="text-truncate flex-md-shrink-0 flex-shrink-1">
-            <SocialMedia />
-          </div>
+        <div className="d-none d-md-block" style={{ maxWidth: "15rem" }}>
+          <Image src="/avatar.jpg" rounded className="w-100" />
         </div>
-      </div >
-      <Fade>
+      </div>
+      <div className="d-flex gap-5 align-items-center text-truncate flex-md-shrink-0 flex-shrink-1 pb-3">
+        <SocialMedia />
+      </div>
+      <Fade triggerOnce>
+        <StatusCards />
         <Padding />
         <TechStackContainer />
         <Padding />
         <EducationContainer />
-        <Padding />
-        <Introduction />
       </Fade>
     </>
   )

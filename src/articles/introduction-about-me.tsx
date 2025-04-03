@@ -2,7 +2,7 @@ import { Fade } from "react-awesome-reveal"
 
 function IntroductionAboutMe() {
     return (
-        <Fade>
+        <Fade triggerOnce>
             <p>
                 My name is Langning Chen, and I use the username <code>langningchen</code> across most social media platforms.
                 My journey into programming began around the third grade when I started experimenting with Visual Basic Script (VBScript).

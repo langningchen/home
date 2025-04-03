@@ -6,7 +6,7 @@ interface SocialMediaProps {
 
 function SocialMedia({ small }: SocialMediaProps) {
   return (
-    <div className={"d-flex justify-content-center " + (small ? "flex-row" : "flex-column")}>
+    <div className={"d-flex justify-content-center text-truncate " + (small ? "flex-row" : "flex-column")}>
       <SocialMediaItem small={small} icon="github" link="https://github.com/langningchen" />
       <SocialMediaItem small={small} icon="wechat" text="langningchen" />
       <SocialMediaItem small={small} icon="envelope" text="i@langningchen.com" link="mailto:i@langningchen.com" />

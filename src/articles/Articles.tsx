@@ -1,4 +1,4 @@
-import { Alert, Card, Container } from "react-bootstrap"
+import { Alert, Card } from "react-bootstrap"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import IntroductionAboutMe from "./introduction-about-me"
 
@@ -11,7 +11,7 @@ function Articles() {
   const { id } = useParams<{ id: string }>()
   if (!id) {
     return (
-      <Container>
+      <>
         {
           Object.keys(articles).map((articleId) => {
             const ArticleComponent = articles[articleId as keyof typeof articles]
@@ -29,7 +29,7 @@ function Articles() {
             )
           })
         }
-      </Container >
+      </>
     )
   }
   const ArticleComponent = articles[id as keyof typeof articles]
@@ -48,12 +48,10 @@ function Articles() {
   return (
     <>
       <Link to="/articles"> &laquo; Back to Articles</Link>
-      <Container>
-        <h3>{ArticleComponent.title}</h3>
-        <h6 className="mb-3">{ArticleComponent.date}</h6>
-        <Alert className="mb-5" variant="secondary">{ArticleComponent.description}</Alert>
-        <ArticleComponent />
-      </Container>
+      <h3>{ArticleComponent.title}</h3>
+      <h6 className="mb-3">{ArticleComponent.date}</h6>
+      <Alert className="mb-5" variant="secondary">{ArticleComponent.description}</Alert>
+      <ArticleComponent />
       <Link to="/articles"> &laquo; Back to Articles</Link>
     </>
   )
