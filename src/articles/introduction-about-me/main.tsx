@@ -1,10 +1,10 @@
 import { ReactNode } from "react"
 import { Fade } from "react-awesome-reveal"
 import ArticleImage from "../ArticleImage"
-import cppCode from "./cpp-code.png"
-import ccf from "./ccf.png"
-import cloudServer from "./cloud-server.png"
-import ai from "./ai.png"
+import cppCode from "./cpp-code.jpg"
+import ccf from "./ccf.jpg"
+import cloudServer from "./cloud-server.jpg"
+import ai from "./ai.jpg"
 import Article from "../Article"
 
 export default class IntroductionAboutMe extends Article {
