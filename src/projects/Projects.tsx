@@ -1,9 +1,11 @@
-function Projects() {
-  return (
-    <>
-      Coming soon...
-    </>
-  )
-}
+import { Component, ReactNode } from "react"
 
-export default Projects
+export default class Projects extends Component {
+  render(): ReactNode {
+    return (
+      <>
+        Coming soon...
+      </>
+    )
+  }
+}

@@ -1,7 +1,9 @@
-function Padding() {
-    return (
-        <div style={{ height: "10vh" }} />
-    )
-}
+import { Component, ReactNode } from "react"
 
-export default Padding
+export default class Padding extends Component {
+    render(): ReactNode {
+        return (
+            <div style={{ height: "10vh" }} />
+        )
+    }
+}
