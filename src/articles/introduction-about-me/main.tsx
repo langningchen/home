@@ -1,15 +1,16 @@
-import { Component, ReactNode } from "react"
+import { ReactNode } from "react"
 import { Fade } from "react-awesome-reveal"
 import ArticleImage from "../ArticleImage"
 import cppCode from "./cpp-code.png"
 import ccf from "./ccf.png"
 import cloudServer from "./cloud-server.png"
 import ai from "./ai.png"
+import Article from "../Article"
 
-export default class IntroductionAboutMe extends Component {
-    static title = "Introduction: About Me";
-    static date = new Date("2024-10-01");
-    static description = "Who am I? What do I do? What do I want to do? Come and read my introduction!";
+export default class IntroductionAboutMe extends Article {
+    public static title = "Introduction: About Me";
+    public static date = new Date("2024-10-01");
+    public static description = "Who am I? What do I do? What do I want to do? Come and read my introduction!";
 
     render(): ReactNode {
         return (
