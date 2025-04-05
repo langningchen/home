@@ -2,9 +2,11 @@ import "./Articles.scss"
 import { Card } from "react-bootstrap"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import IntroductionAboutMe from "./introduction-about-me/main"
+import AboutLlama4 from "./about-llama4/main"
 
 const articles = {
   "introduction-about-me": IntroductionAboutMe,
+  "about-llama4": AboutLlama4,
 }
 
 export default function Articles() {

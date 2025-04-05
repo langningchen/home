@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import { imagetools } from 'vite-imagetools'
+import { Mode, plugin } from 'vite-plugin-markdown'
 
 export default defineConfig({
   plugins: [react(), imagetools({
@@ -16,5 +17,7 @@ export default defineConfig({
       }
       return searchParams;
     },
+  }), plugin({
+    mode: [Mode.REACT]
   })],
 })
