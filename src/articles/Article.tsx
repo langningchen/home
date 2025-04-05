@@ -9,7 +9,7 @@ abstract class AbstractArticle extends Component {
 }
 
 export default class Article extends AbstractArticle {
-    public readTime(): JSX.Element {
+    public readTime() {
         const content = renderToString(this.render());
         const readTime = readTimeEstimate(content);
         return (
