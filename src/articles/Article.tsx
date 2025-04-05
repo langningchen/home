@@ -14,7 +14,7 @@ export default class Article extends AbstractArticle {
         const readTime = readTimeEstimate(content);
         return (
             <span title={`${readTime.totalWords + readTime.otherLanguageTimeCharacters} words and ${readTime.totalImages} images`}>
-                Estimated read time: {readTime.humanizedDuration}
+                Read time: {readTime.humanizedDuration}
             </span>
         );
     }

@@ -24,8 +24,10 @@ export default function Articles() {
                 <Card.Body>
                   <Card.Title>{ArticleComponent.title}</Card.Title>
                   <Card.Subtitle>
-                    <span className="me-5">{ArticleComponent.date.toLocaleDateString()}</span>
-                    <span className="text-primary">{new ArticleComponent({}).readTime()}</span>
+                    <div className="d-flex g-x-5 flex-wrap">
+                      <span className="me-5">{ArticleComponent.date.toLocaleDateString()}</span>
+                      <span className="text-primary">{new ArticleComponent({}).readTime()}</span>
+                    </div>
                   </Card.Subtitle>
                   <br />
                   <Card.Text>{ArticleComponent.description}</Card.Text>
@@ -54,7 +56,7 @@ export default function Articles() {
     <div className="Article">
       <div className="mb-3"><Link to="/articles">&laquo; Back to Articles</Link></div>
       <h1>{ArticleComponent.title}</h1>
-      <div className="mb-3">
+      <div className="mb-3 d-flex g-x-5 flex-wrap">
         <span className="me-5">{ArticleComponent.date.toLocaleDateString()}</span>
         <span className="text-primary">{new ArticleComponent({}).readTime()}</span>
       </div>
