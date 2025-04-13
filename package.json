@@ -33,13 +33,13 @@
     "read-time-estimate": "^0.0.3",
     "remark-gfm": "^4.0.1",
     "sass": "^1.86.3",
-    "simple-icons": "^14.12.0"
+    "simple-icons": "^14.12.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.24.0",
-    "@types/node": "^22.14.0",
-    "@types/react": "^19.1.0",
-    "@types/react-dom": "^19.1.1",
+    "@types/node": "^22.14.1",
+    "@types/react": "^19.1.1",
+    "@types/react-dom": "^19.1.2",
     "@types/read-time-estimate": "^0.0.2",
     "@vitejs/plugin-react-swc": "^3.8.1",
     "eslint": "^9.24.0",
@@ -47,10 +47,10 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
     "typescript": "~5.8.3",
-    "typescript-eslint": "^8.29.0",
+    "typescript-eslint": "^8.29.1",
     "vite": "^6.2.6",
     "vite-imagetools": "^7.0.5",
     "vite-plugin-markdown": "^2.2.0",
-    "wrangler": "^4.7.2"
+    "wrangler": "^4.10.0"
   }
 }
