@@ -13,8 +13,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "deploy": "npm run build && wrangler pages deploy ./dist"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@babel/core": "^7.26.10",
