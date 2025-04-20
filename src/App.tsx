@@ -16,7 +16,7 @@ export default class App extends Component {
     return (
       <div className="w-100 h-100 d-flex flex-column-reverse flex-sm-row flex-shrink-1" >
         <Navigation />
-        <main className="w-100 h-100 p-5">
+        <main className="w-100 h-100 py-5">
           <Container>
             <Routes>
               <Route path="/" element={<Navigate to="/home" />} />
