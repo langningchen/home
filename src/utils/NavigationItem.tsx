@@ -1,6 +1,6 @@
 import { Component, ReactNode } from "react"
 import { NavItem } from "react-bootstrap"
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router"
 
 export default class NavigationItem extends Component<{
   icon: string

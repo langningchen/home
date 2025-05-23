@@ -8,9 +8,11 @@ import Padding from "../utils/Padding"
 import SocialMedia from "../utils/SocialMedia"
 import EducationContainer from "./EducationContainer"
 import StatusCards from "./StatusCards"
+import { withTranslation, WithTranslation } from "react-i18next"
 
-export default class Home extends Component {
+class Home extends Component<WithTranslation> {
   render(): ReactNode {
+    const t = this.props.t;
     return (
       <>
         <div className="d-block d-md-none pb-3" style={{ maxWidth: "15rem" }}>
@@ -18,20 +20,20 @@ export default class Home extends Component {
         </div>
         <div className="d-flex justify-content-between gap-5 pb-3">
           <div className="flex-grow-1">
-            <div className="fs-4">Hello! I am</div>
-            <div className="fs-1 name">Langning Chen</div>
+            <div className="fs-4">{t('name.part1')}</div>
+            <div className="fs-1 name">{t('name.part2')}</div>
             <ReactTyped className="fs-2"
               strings={[
-                "a high school student",
-                "a software engineer",
-                "a web developer",
-                "an open-source contributor",
-                "an OIer",
+                t('role.option1'),
+                t('role.option2'),
+                t('role.option3'),
+                t('role.option4'),
+                t('role.option5'),
               ]}
               typeSpeed={30} backSpeed={20} backDelay={2000}
               loop
             />
-            <div className="fs-2" style={{ visibility: "hidden", position: "relative", height: 0 }}>an open-source contributor|</div>
+            <div className="fs-2" style={{ visibility: "hidden", position: "relative", height: 0 }}>{t('role.option4')}|</div>
           </div>
           <div className="d-none d-md-block" style={{ maxWidth: "15rem" }}>
             <Image src="/avatar.jpg" rounded className="w-100" />
@@ -51,3 +53,5 @@ export default class Home extends Component {
     )
   }
 }
+
+export default withTranslation(undefined, { keyPrefix: 'home' })(Home);

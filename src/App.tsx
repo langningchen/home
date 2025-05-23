@@ -6,31 +6,34 @@ import Home from "./home/Home"
 import Articles from "./articles/Articles"
 import SocialMedia from "./utils/SocialMedia"
 import Navigation from "./utils/Navigation"
-import { Navigate, Route, Routes } from "react-router-dom"
+import { Navigate, Route, Routes } from "react-router"
 import NotFound from "./utils/NotFound"
 import Projects from "./projects/Projects"
 import { Container } from "react-bootstrap"
+import useUrlLang from "./utils/useUrlLang"
+import LanguageWrapper from "./utils/LanguageWrapper"
 
-export default class App extends Component {
-  render(): ReactNode {
-    return (
-      <div className="w-100 h-100 d-flex flex-column-reverse flex-sm-row flex-shrink-1" >
-        <Navigation />
-        <main className="w-100 h-100 py-5">
-          <Container>
-            <Routes>
-              <Route path="/" element={<Navigate to="/home" />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/articles" element={<Articles />} />
-              <Route path="/articles/:id" element={<Articles />} />
-              <Route path="/projects" element={<Projects />} />
+export default function App(): ReactNode {
+  const { lang, prefix } = useUrlLang();
+  return (
+    <div className="w-100 h-100 d-flex flex-column-reverse flex-sm-row flex-shrink-1" >
+      <Navigation />
+      <main className="w-100 h-100 py-5">
+        <Container>
+          <Routes>
+            <Route element={<LanguageWrapper lng={lang} />}>
+              <Route path={`${prefix}/`} element={<Navigate to={`/${lang}/home`} replace />} />
+              <Route path={`${prefix}/home`} element={<Home />} />
+              <Route path={`${prefix}/articles`} element={<Articles />} />
+              <Route path={`${prefix}articles/:id`} element={<Articles />} />
+              <Route path={`${prefix}projects`} element={<Projects />} />
               <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Container>
-          <hr className="mt-5" />
-          <SocialMedia small />
-        </main>
-      </div>
-    )
-  }
+            </Route>
+          </Routes>
+        </Container>
+        <hr className="mt-5" />
+        <SocialMedia small />
+      </main>
+    </div>
+  )
 }
