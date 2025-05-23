@@ -8,7 +8,12 @@ const useUrlLang = () => {
     if (SUPPORTED_LANGS.indexOf(lang) == -1) {
         path = lang + "/" + path;
         prefix = "";
-        lang = DEFAULT_LANG;
+        let browserLang = window.navigator.language;
+        if (SUPPORTED_LANGS.indexOf(browserLang) != -1) {
+            lang = browserLang;
+        } else {
+            lang = DEFAULT_LANG;
+        }
     }
     return { path, lang, prefix }
 };

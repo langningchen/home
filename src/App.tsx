@@ -1,7 +1,7 @@
 import "./App.scss"
 import "bootstrap/dist/js/bootstrap.bundle.min.js"
 import "bootstrap-icons/font/bootstrap-icons.css"
-import { Component, ReactNode } from "react"
+import { ReactNode } from "react"
 import Home from "./home/Home"
 import Articles from "./articles/Articles"
 import SocialMedia from "./utils/SocialMedia"
