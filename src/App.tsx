@@ -22,11 +22,13 @@ export default function App(): ReactNode {
         <Container>
           <Routes>
             <Route element={<LanguageWrapper lng={lang} />}>
-              <Route path={`${prefix}/`} element={<Navigate to={`/${lang}/home`} replace />} />
+              <Route path={`${prefix}/`} element={
+                <Navigate to={`${lang}/home`} replace />
+              } />
               <Route path={`${prefix}/home`} element={<Home />} />
               <Route path={`${prefix}/articles`} element={<Articles />} />
-              <Route path={`${prefix}articles/:id`} element={<Articles />} />
-              <Route path={`${prefix}projects`} element={<Projects />} />
+              <Route path={`${prefix}/articles/:id`} element={<Articles />} />
+              <Route path={`${prefix}/projects`} element={<Projects />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

@@ -21,7 +21,7 @@ i18n.use(LanguageDetector)
                 translation: {
                     home: {
                         name: {
-                            part1: 'Hello! I am',
+                            part1: '👋 Hello! I am',
                             part2: 'Langning Chen',
                         },
                         role: {
@@ -38,7 +38,7 @@ i18n.use(LanguageDetector)
                 translation: {
                     home: {
                         name: {
-                            part1: '你好！我是',
+                            part1: '👋 你好！我是',
                             part2: '陈朗宁',
                         },
                         role: {
@@ -46,7 +46,7 @@ i18n.use(LanguageDetector)
                             option2: '一名软件工程师',
                             option3: '一名网页开发者',
                             option4: '一名开源贡献者',
-                            option5: '一名 OIer',
+                            option5: '一名信奥赛选手',
                         },
                     },
                 }
