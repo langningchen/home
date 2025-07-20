@@ -14,6 +14,9 @@ pnpm create-article "My New Article Title"
 
 # With category and tags
 pnpm create-article "Advanced TypeScript Tips" --category "Technology" --tags "typescript,programming,tips"
+
+# With language support (creates localized template)
+pnpm create-article "我的新文章" --category "技术" --tags "typescript,编程,技巧" --lang "zh"
 ```
 
 This will:
@@ -68,9 +71,11 @@ import YourArticle from "./your-article-id/main"
 - **Tags**: Add searchable tags to articles
 - **Featured**: Mark important articles as featured
 - **Automatic sorting**: Articles sorted by date (newest first)
-- **Read time estimation**: Automatically calculated
+- **Read time estimation**: Automatically calculated and localized
 - **Responsive design**: Follows Settings page style
 - **Dark mode support**: Adapts to theme
+- **Multi-language support**: Full i18n support for UI elements
+- **Localized templates**: Article creation script supports multiple languages
 
 ### Adding Images
 
@@ -115,6 +120,8 @@ The system automatically fetches your repositories from GitHub API:
 - Sorts by stars and recent activity
 - Shows language, stars, forks, and topics
 - Real-time data from GitHub
+- Fully localized interface
+- Status badges in multiple languages
 
 ### Customizing Repository Display
 
@@ -124,6 +131,33 @@ The GitHub section automatically handles:
 - Repository metadata (language, stars, forks)
 - Topics as badges
 - Last updated timestamps
+
+## Internationalization (i18n)
+
+The system supports multiple languages with complete translations for:
+
+### Supported Languages
+- English (en-US)
+- Chinese Simplified (zh-CN)
+
+### Translated Elements
+- All UI text (buttons, labels, descriptions)
+- Article metadata (featured badges, read time)
+- Project status indicators
+- Error messages and notifications
+- Navigation elements
+
+### Adding New Languages
+1. Edit `src/utils/i18n.ts`
+2. Add language to `SUPPORTED_LANGS` array
+3. Add translation resources in `resources` object
+4. Update language selection in Settings
+
+### Translation Keys
+- `articles.*` - Article-related translations
+- `projects.*` - Project-related translations
+- `settings.*` - Settings page translations
+- `navigation.*` - Navigation menu translations
 
 ## Styling
 

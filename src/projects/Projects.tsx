@@ -1,6 +1,6 @@
 import "./Projects.scss"
 import { ReactNode, useState, useEffect } from "react"
-import { Card, Row, Col, Badge, Button, ListGroup, Placeholder } from "react-bootstrap"
+import { Badge, Button, Card, Container, ListGroup, Placeholder } from 'react-bootstrap'
 import { useTranslation } from "react-i18next"
 
 // Featured projects data structure (you can modify this)
@@ -106,7 +106,7 @@ export default function Projects(): ReactNode {
   }
 
   return (
-    <div className="projects-container px-1 px-sm-2 px-md-3">
+    <Container className="projects-container py-3">
       <header className="mb-4">
         <h1 className="mb-2 fs-3 fs-sm-2 fs-md-1">
           <i className="bi bi-code-square me-2 me-sm-3" aria-hidden="true"></i>
@@ -123,9 +123,9 @@ export default function Projects(): ReactNode {
           <i className="bi bi-star-fill me-2 text-warning" aria-hidden="true"></i>
           {t('projects.featured', 'Featured Projects')}
         </h2>
-        <Row className="g-3 g-lg-4">
+        <div className="row g-3 g-lg-4">
           {featuredProjects.map((project) => (
-            <Col key={project.id} xs={12} lg={6}>
+            <div key={project.id} className="col-12 col-lg-6">
               <Card className="h-100 featured-project-card">
                 {project.image && (
                   <Card.Img variant="top" src={project.image} alt={project.title} />
@@ -137,7 +137,12 @@ export default function Projects(): ReactNode {
                       bg={project.status === 'Active' ? 'success' : 'info'}
                       className="ms-2 flex-shrink-0"
                     >
-                      {project.status}
+                      {project.status === 'Active'
+                        ? t('projects.active')
+                        : project.status === 'Maintained by Team'
+                          ? t('projects.maintainedByTeam')
+                          : t('projects.archived')
+                      }
                     </Badge>
                   </div>
                   <Card.Text className="flex-grow-1 mb-3">
@@ -162,7 +167,7 @@ export default function Projects(): ReactNode {
                         rel="noopener noreferrer"
                       >
                         <i className="bi bi-github me-2" aria-hidden="true"></i>
-                        GitHub
+                        {t('projects.github')}
                       </Button>
                     )}
                     {project.links.website && (
@@ -174,15 +179,15 @@ export default function Projects(): ReactNode {
                         rel="noopener noreferrer"
                       >
                         <i className="bi bi-globe me-2" aria-hidden="true"></i>
-                        Visit
+                        {t('projects.visit')}
                       </Button>
                     )}
                   </div>
                 </Card.Body>
               </Card>
-            </Col>
+            </div>
           ))}
-        </Row>
+        </div>
       </section>
 
       {/* GitHub Repositories Section */}
@@ -193,150 +198,118 @@ export default function Projects(): ReactNode {
           {!loading && repos.length > 0 && ` (${repos.length})`}
         </h2>
 
-        <Row className="g-2 g-sm-3 g-lg-4">
-          <Col xs={12} lg={8}>
-            <Card>
-              <Card.Header className="p-2 p-sm-3">
-                <h3 className="h6 h-sm-5 mb-0">
-                  <i className="bi bi-list me-1 me-sm-2" aria-hidden="true"></i>
-                  {t('projects.repositoryList', 'Repository List')}
-                </h3>
-              </Card.Header>
-              <ListGroup variant="flush">
-                {loading ? (
-                  // Loading placeholders
-                  Array.from({ length: 6 }).map((_, index) => (
-                    <ListGroup.Item key={index} className="p-3">
-                      <div className="d-flex justify-content-between align-items-start">
-                        <div className="flex-grow-1">
-                          <Placeholder as="div" animation="glow">
-                            <Placeholder xs={6} className="mb-2" />
-                          </Placeholder>
-                          <Placeholder as="div" animation="glow">
-                            <Placeholder xs={8} size="sm" className="mb-2" />
-                          </Placeholder>
-                          <Placeholder as="div" animation="glow">
-                            <Placeholder xs={4} size="xs" />
-                          </Placeholder>
-                        </div>
-                        <div className="flex-shrink-0 ms-3">
-                          <Placeholder.Button xs={2} size="sm" />
-                        </div>
+        <Card>
+          <Card.Header className="p-2 p-sm-3">
+            <h3 className="h6 h-sm-5 mb-0">
+              <i className="bi bi-list me-1 me-sm-2" aria-hidden="true"></i>
+              {t('projects.repositoryList', 'Repository List')}
+            </h3>
+          </Card.Header>
+          <ListGroup variant="flush">
+            {loading ? (
+              // Loading placeholders
+              Array.from({ length: 6 }).map((_, index) => (
+                <ListGroup.Item key={index} className="p-3">
+                  <div className="d-flex justify-content-between align-items-start">
+                    <div className="flex-grow-1">
+                      <Placeholder as="div" animation="glow">
+                        <Placeholder xs={6} className="mb-2" />
+                      </Placeholder>
+                      <Placeholder as="div" animation="glow">
+                        <Placeholder xs={8} size="sm" className="mb-2" />
+                      </Placeholder>
+                      <Placeholder as="div" animation="glow">
+                        <Placeholder xs={4} size="xs" />
+                      </Placeholder>
+                    </div>
+                    <div className="flex-shrink-0 ms-3">
+                      <Placeholder.Button xs={2} size="sm" />
+                    </div>
+                  </div>
+                </ListGroup.Item>
+              ))
+            ) : error ? (
+              <ListGroup.Item className="p-3 text-center">
+                <i className="bi bi-exclamation-triangle text-warning me-2" aria-hidden="true"></i>
+                {t('projects.errorLoadingRepos')}: {error}
+              </ListGroup.Item>
+            ) : repos.length === 0 ? (
+              <ListGroup.Item className="p-3 text-center">
+                <i className="bi bi-info-circle text-info me-2" aria-hidden="true"></i>
+                {t('projects.noReposFound')}
+              </ListGroup.Item>
+            ) : (
+              repos.map((repo) => (
+                <ListGroup.Item
+                  key={repo.id}
+                  as="a"
+                  href={repo.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-decoration-none p-3 repo-item"
+                  aria-label={`Repository: ${repo.name}`}
+                >
+                  <div className="d-flex justify-content-between align-items-start">
+                    <div className="flex-grow-1 me-3">
+                      <div className="fw-semibold mb-1">
+                        {repo.name}
+                        {repo.stargazers_count > 0 && (
+                          <Badge bg="warning" text="dark" className="ms-2 small">
+                            <i className="bi bi-star-fill me-1" aria-hidden="true"></i>
+                            {repo.stargazers_count}
+                          </Badge>
+                        )}
                       </div>
-                    </ListGroup.Item>
-                  ))
-                ) : error ? (
-                  <ListGroup.Item className="p-3 text-center">
-                    <i className="bi bi-exclamation-triangle text-warning me-2" aria-hidden="true"></i>
-                    Error loading repositories: {error}
-                  </ListGroup.Item>
-                ) : repos.length === 0 ? (
-                  <ListGroup.Item className="p-3 text-center">
-                    <i className="bi bi-info-circle text-info me-2" aria-hidden="true"></i>
-                    No repositories found
-                  </ListGroup.Item>
-                ) : (
-                  repos.map((repo) => (
-                    <ListGroup.Item
-                      key={repo.id}
-                      as="a"
-                      href={repo.html_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-decoration-none p-3 repo-item"
-                      aria-label={`Repository: ${repo.name}`}
-                    >
-                      <div className="d-flex justify-content-between align-items-start">
-                        <div className="flex-grow-1 me-3">
-                          <div className="fw-semibold mb-1">
-                            {repo.name}
-                            {repo.stargazers_count > 0 && (
-                              <Badge bg="warning" text="dark" className="ms-2 small">
-                                <i className="bi bi-star-fill me-1" aria-hidden="true"></i>
-                                {repo.stargazers_count}
-                              </Badge>
-                            )}
-                          </div>
-                          {repo.description && (
-                            <p className="text-muted small mb-2">
-                              {repo.description}
-                            </p>
-                          )}
-                          <div className="d-flex align-items-center flex-wrap gap-2 small text-muted">
-                            {repo.language && (
-                              <span className="d-flex align-items-center">
-                                <span
-                                  className="rounded-circle me-1"
-                                  style={{
-                                    width: '12px',
-                                    height: '12px',
-                                    backgroundColor: getLanguageColor(repo.language)
-                                  }}
-                                ></span>
-                                {repo.language}
-                              </span>
-                            )}
-                            <span>
-                              <i className="bi bi-clock me-1" aria-hidden="true"></i>
-                              {new Date(repo.updated_at).toLocaleDateString()}
-                            </span>
-                            {repo.forks_count > 0 && (
-                              <span>
-                                <i className="bi bi-git me-1" aria-hidden="true"></i>
-                                {repo.forks_count}
-                              </span>
-                            )}
-                          </div>
-                          {repo.topics.length > 0 && (
-                            <div className="mt-2 d-flex flex-wrap gap-1">
-                              {repo.topics.slice(0, 5).map((topic) => (
-                                <Badge key={topic} bg="light" text="dark" className="small">
-                                  {topic}
-                                </Badge>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                        <div className="flex-shrink-0">
-                          <i className="bi bi-box-arrow-up-right text-muted" aria-hidden="true"></i>
-                        </div>
+                      {repo.description && (
+                        <p className="text-muted small mb-2">
+                          {repo.description}
+                        </p>
+                      )}
+                      <div className="d-flex align-items-center flex-wrap gap-2 small text-muted">
+                        {repo.language && (
+                          <span className="d-flex align-items-center">
+                            <span
+                              className="rounded-circle me-1"
+                              style={{
+                                width: '12px',
+                                height: '12px',
+                                backgroundColor: getLanguageColor(repo.language)
+                              }}
+                            ></span>
+                            {repo.language}
+                          </span>
+                        )}
+                        <span>
+                          <i className="bi bi-clock me-1" aria-hidden="true"></i>
+                          {new Date(repo.updated_at).toLocaleDateString()}
+                        </span>
+                        {repo.forks_count > 0 && (
+                          <span>
+                            <i className="bi bi-git me-1" aria-hidden="true"></i>
+                            {repo.forks_count}
+                          </span>
+                        )}
                       </div>
-                    </ListGroup.Item>
-                  ))
-                )}
-              </ListGroup>
-            </Card>
-          </Col>
-
-          <Col xs={12} lg={4}>
-            <Card className="bg-body-secondary h-100">
-              <Card.Body className="p-2 p-sm-3">
-                <h3 className="h6 card-title">
-                  <i className="bi bi-info-circle me-1 me-sm-2" aria-hidden="true"></i>
-                  {t('projects.about', 'About Projects')}
-                </h3>
-                <p className="card-text small mb-3">
-                  {t('projects.aboutDescription', 'These are my open-source projects and contributions. The repositories are automatically fetched from my GitHub profile.')}
-                </p>
-                <div className="small text-muted">
-                  <div className="mb-2">
-                    <i className="bi bi-star text-warning me-2" aria-hidden="true"></i>
-                    Featured projects are manually curated
+                      {repo.topics.length > 0 && (
+                        <div className="mt-2 d-flex flex-wrap gap-1">
+                          {repo.topics.slice(0, 5).map((topic) => (
+                            <Badge key={topic} bg="light" text="dark" className="small">
+                              {topic}
+                            </Badge>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex-shrink-0">
+                      <i className="bi bi-box-arrow-up-right text-muted" aria-hidden="true"></i>
+                    </div>
                   </div>
-                  <div className="mb-2">
-                    <i className="bi bi-github me-2" aria-hidden="true"></i>
-                    Repositories sorted by stars and activity
-                  </div>
-                  <div>
-                    <i className="bi bi-arrow-clockwise me-2" aria-hidden="true"></i>
-                    Auto-updated from GitHub API
-                  </div>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
+                </ListGroup.Item>
+              ))
+            )}
+          </ListGroup>
+        </Card>
       </section>
-    </div>
+    </Container>
   )
 }

@@ -4,7 +4,7 @@
  * Article Generator Script
  * 
  * This script helps you create new articles for your blog.
- * Usage: node scripts/create-article.js "Article Title" --category "Category" --tags "tag1,tag2,tag3"
+ * Usage: node scripts/create-article.js "Article Title" --category "Category" --tags "tag1,tag2,tag3" --lang "zh"
  */
 
 const fs = require('fs')
@@ -15,10 +15,11 @@ const args = process.argv.slice(2)
 const title = args[0]
 const categoryFlag = args.indexOf('--category')
 const tagsFlag = args.indexOf('--tags')
+const langFlag = args.indexOf('--lang')
 
 if (!title) {
     console.error('Please provide an article title')
-    console.error('Usage: node scripts/create-article.js "Article Title" --category "Category" --tags "tag1,tag2,tag3"')
+    console.error('Usage: node scripts/create-article.js "Article Title" --category "Category" --tags "tag1,tag2,tag3" --lang "zh"')
     process.exit(1)
 }
 
@@ -30,8 +31,29 @@ const articleId = title
 
 const category = categoryFlag !== -1 && args[categoryFlag + 1] ? args[categoryFlag + 1] : 'General'
 const tags = tagsFlag !== -1 && args[tagsFlag + 1] ? args[tagsFlag + 1].split(',').map(tag => tag.trim()) : []
+const lang = langFlag !== -1 && args[langFlag + 1] ? args[langFlag + 1] : 'en'
 
 const currentDate = new Date().toISOString().split('T')[0]
+
+// Localized content based on language
+const content = {
+    en: {
+        description: "Add your article description here...",
+        startWriting: "Start writing your article content here...",
+        canUse: "You can use JSX elements, images, code blocks, and more.",
+        exampleImage: "Example image usage:",
+        exampleCode: "Example code block:"
+    },
+    zh: {
+        description: "在这里添加您的文章描述...",
+        startWriting: "开始在这里编写您的文章内容...",
+        canUse: "您可以使用 JSX 元素、图片、代码块等。",
+        exampleImage: "示例图片用法：",
+        exampleCode: "示例代码块："
+    }
+}
+
+const loc = content[lang] || content.en
 
 // Create article directory
 const articleDir = path.join(__dirname, '..', 'src', 'articles', articleId)
@@ -47,24 +69,24 @@ import Article from "../Article"
 export default class ${title.replace(/[^a-zA-Z0-9]/g, '')} extends Article {
     public static title = "${title}";
     public static date = new Date("${currentDate}");
-    public static description = "Add your article description here...";
+    public static description = "${loc.description}";
 
     render(): ReactNode {
         return (
             <Fade triggerOnce>
                 <p>
-                    Start writing your article content here...
+                    ${loc.startWriting}
                 </p>
                 
                 <p>
-                    You can use JSX elements, images, code blocks, and more.
+                    ${loc.canUse}
                 </p>
                 
-                {/* Example image usage:
+                {/* ${loc.exampleImage}
                 <p><ArticleImage src={imageImport} /></p>
                 */}
                 
-                {/* Example code block:
+                {/* ${loc.exampleCode}
                 <pre><code>
                     console.log("Hello, World!");
                 </code></pre>

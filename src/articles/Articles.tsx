@@ -1,6 +1,6 @@
 import "./Articles.scss"
 import { ReactNode, useCallback, useMemo } from "react"
-import { Card, ListGroup, Row, Col, Badge } from "react-bootstrap"
+import { Card, ListGroup, Badge, Container } from "react-bootstrap"
 import { Link, useNavigate, useParams } from "react-router"
 import { useTranslation } from "react-i18next"
 import { getArticleById, getAllArticles } from "./articlesConfig"
@@ -36,7 +36,7 @@ export default function Articles(): ReactNode {
                 {articleMeta.featured && (
                   <Badge bg="warning" className="text-dark">
                     <i className="bi bi-star-fill" aria-hidden="true"></i>
-                    <span className="visually-hidden">Featured</span>
+                    <span className="visually-hidden">{t('articles.featured')}</span>
                   </Badge>
                 )}
               </div>
@@ -79,7 +79,7 @@ export default function Articles(): ReactNode {
 
   if (!params.id) {
     return (
-      <div className="articles-container px-1 px-sm-2 px-md-3">
+      <Container className="articles-container py-3">
         <header className="mb-3 mb-sm-4">
           <h1 className="mb-2 fs-3 fs-sm-2 fs-md-1">
             <i className="bi bi-journal-text me-2 me-sm-3" aria-hidden="true"></i>
@@ -90,71 +90,53 @@ export default function Articles(): ReactNode {
           </p>
         </header>
 
-        <Row className="g-2 g-sm-3 g-lg-4">
-          <Col xs={12} lg={8}>
-            <Card>
-              <Card.Header className="p-2 p-sm-3">
-                <h2 className="h6 h-sm-5 mb-0">
-                  <i className="bi bi-list me-1 me-sm-2" aria-hidden="true"></i>
-                  {t('articles.allArticles', 'All Articles')} ({getAllArticles().length})
-                </h2>
-              </Card.Header>
-              <ListGroup variant="flush">
-                {articleItems}
-              </ListGroup>
-            </Card>
-          </Col>
-
-          <Col xs={12} lg={4}>
-            <Card className="bg-body-secondary h-100">
-              <Card.Body className="p-2 p-sm-3">
-                <h3 className="h6 card-title">
-                  <i className="bi bi-info-circle me-1 me-sm-2" aria-hidden="true"></i>
-                  {t('articles.about', 'About Articles')}
-                </h3>
-                <p className="card-text small mb-0">
-                  {t('articles.aboutDescription', 'Here you can find my latest articles about programming, technology, and personal experiences.')}
-                </p>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </div>
+        <Card>
+          <Card.Header className="p-2 p-sm-3">
+            <h2 className="h6 h-sm-5 mb-0">
+              <i className="bi bi-list me-1 me-sm-2" aria-hidden="true"></i>
+              {t('articles.allArticles', 'All Articles')} ({getAllArticles().length})
+            </h2>
+          </Card.Header>
+          <ListGroup variant="flush">
+            {articleItems}
+          </ListGroup>
+        </Card>
+      </Container>
     )
   }
 
   const articleMeta = getArticleById(params.id)
   if (!articleMeta) {
     return (
-      <div className="articles-container px-1 px-sm-2 px-md-3">
+      <Container className="articles-container py-3">
         <Card>
           <Card.Body>
             <Card.Title>
               <i className="bi bi-exclamation-triangle me-2" aria-hidden="true"></i>
-              Article Not Found
+              {t('articles.notFound')}
             </Card.Title>
             <Card.Text>
-              The article you are looking for does not exist.
+              {t('articles.notFoundMessage')}
             </Card.Text>
             <Link to="/articles" className="btn btn-primary">
               <i className="bi bi-arrow-left me-2" aria-hidden="true"></i>
-              Back to Articles
+              {t('articles.backToArticles')}
             </Link>
           </Card.Body>
         </Card>
-      </div>
+      </Container>
     )
   }
 
   const ArticleComponent = articleMeta.component
 
   return (
-    <div className="articles-container px-1 px-sm-2 px-md-3">
+    <Container className="articles-container py-3">
       <div className="Article">
         <div className="mb-3">
           <Link to="/articles" className="btn btn-outline-secondary btn-sm">
             <i className="bi bi-arrow-left me-2" aria-hidden="true"></i>
-            Back to Articles
+            {t('articles.backToArticles')}
           </Link>
         </div>
         <div className="d-flex align-items-center mb-3">
@@ -162,7 +144,7 @@ export default function Articles(): ReactNode {
           {articleMeta.featured && (
             <Badge bg="warning" className="text-dark">
               <i className="bi bi-star-fill me-1" aria-hidden="true"></i>
-              Featured
+              {t('articles.featured')}
             </Badge>
           )}
         </div>
@@ -199,10 +181,10 @@ export default function Articles(): ReactNode {
         <div className="mt-4 pt-3 border-top">
           <Link to="/articles" className="btn btn-outline-secondary btn-sm">
             <i className="bi bi-arrow-left me-2" aria-hidden="true"></i>
-            Back to Articles
+            {t('articles.backToArticles')}
           </Link>
         </div>
       </div>
-    </div>
+    </Container>
   )
 }

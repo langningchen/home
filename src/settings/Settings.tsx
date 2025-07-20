@@ -1,5 +1,5 @@
 import { ReactNode, useCallback, useMemo } from 'react';
-import { Card, ListGroup, Row, Col, Badge } from 'react-bootstrap';
+import { Card, ListGroup, Badge } from 'react-bootstrap';
 import { useNavigate, useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import useUrlLang from '../utils/useUrlLang';
@@ -85,8 +85,8 @@ export default function Settings(): ReactNode {
                 </p>
             </header>
 
-            <Row className="g-2 g-sm-3 g-lg-4" id="main-settings">
-                <Col xs={12} lg={8}>
+            <div className="d-flex justify-content-center" id="main-settings">
+                <div style={{ maxWidth: '800px', width: '100%' }}>
                     {/* Language Settings */}
                     <Card className="mb-3 mb-sm-4">
                         <Card.Header className="p-2 p-sm-3">
@@ -171,22 +171,8 @@ export default function Settings(): ReactNode {
                             </ListGroup.Item>
                         </ListGroup>
                     </Card>
-                </Col>
-
-                <Col xs={12} lg={4}>
-                    <Card className="bg-body-secondary h-100">
-                        <Card.Body className="p-2 p-sm-3">
-                            <h3 className="h6 card-title">
-                                <i className="bi bi-info-circle me-1 me-sm-2" aria-hidden="true"></i>
-                                {t('settings.about')}
-                            </h3>
-                            <p className="card-text small mb-0">
-                                {t('settings.aboutDescription')}
-                            </p>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
+                </div>
+            </div>
         </div>
     );
 }
