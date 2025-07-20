@@ -1,8 +1,12 @@
-import { useEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { Outlet } from 'react-router';
-import i18n from './i18n';
+import i18n, { SupportedLanguage } from './i18n';
 
-export default function LanguageWrapper({ lng }: { lng: string }) {
+interface LanguageWrapperProps {
+    lng: SupportedLanguage;
+}
+
+export default function LanguageWrapper({ lng }: LanguageWrapperProps): ReactNode {
     useEffect(() => {
         if (lng && i18n.language !== lng) {
             i18n.changeLanguage(lng);
