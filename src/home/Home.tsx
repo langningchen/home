@@ -39,7 +39,7 @@ class Home extends Component<WithTranslation> {
             <Image src="/avatar.jpg" rounded className="w-100" />
           </div>
         </div>
-        <div className="d-flex gap-5 align-items-center text-truncate flex-md-shrink-0 flex-shrink-1 pb-3">
+        <div className="d-flex gap-5 align-items-center text-truncate flex-md-shrink-0 flex-shrink-0 pb-3">
           <SocialMedia />
         </div>
         <Fade triggerOnce>
