@@ -17,6 +17,42 @@
     }
 }
 
+// Tag badges with hover effects and interactions
+.tag-badge {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    user-select: none;
+
+    &:hover {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+.tag-filter-badge {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+
+    &:hover {
+        opacity: 0.8;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+
+    .bi-x {
+        font-size: 0.8em;
+    }
+}
+
 .Article {
     .Introduction {
         font-family: 'MonaspaceRadon';

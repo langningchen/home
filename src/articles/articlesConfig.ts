@@ -66,3 +66,50 @@ export const getTags = (): string[] => {
         .flatMap(article => article.tags || [])
     return [...new Set(tags)]
 }
+
+// Search articles by text (title, description, category, tags)
+export const searchArticles = (searchTerm: string): ArticleMetadata[] => {
+    if (!searchTerm.trim()) return getAllArticles()
+
+    const term = searchTerm.toLowerCase()
+    return getAllArticles().filter(article => {
+        const titleMatch = article.component.title.toLowerCase().includes(term)
+        const descMatch = article.component.description.toLowerCase().includes(term)
+        const categoryMatch = article.category?.toLowerCase().includes(term) || false
+        const tagsMatch = article.tags?.some(tag => tag.toLowerCase().includes(term)) || false
+
+        return titleMatch || descMatch || categoryMatch || tagsMatch
+    })
+}
+
+// Enhanced filtering with multiple criteria
+export interface ArticleFilters {
+    category?: string
+    tags?: string[]
+    featured?: boolean
+    searchTerm?: string
+}
+
+export const getFilteredArticles = (filters: ArticleFilters): ArticleMetadata[] => {
+    let articles = getAllArticles()
+
+    if (filters.searchTerm) {
+        articles = searchArticles(filters.searchTerm)
+    }
+
+    if (filters.category) {
+        articles = articles.filter(article => article.category === filters.category)
+    }
+
+    if (filters.tags && filters.tags.length > 0) {
+        articles = articles.filter(article =>
+            filters.tags!.some(tag => article.tags?.includes(tag))
+        )
+    }
+
+    if (filters.featured !== undefined) {
+        articles = articles.filter(article => article.featured === filters.featured)
+    }
+
+    return articles
+}

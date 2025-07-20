@@ -110,10 +110,10 @@ export default function Projects(): ReactNode {
       <header className="mb-4">
         <h1 className="mb-2 fs-3 fs-sm-2 fs-md-1">
           <i className="bi bi-code-square me-2 me-sm-3" aria-hidden="true"></i>
-          {t('projects.title', 'Projects')}
+          {t('projects.title')}
         </h1>
         <p className="text-muted mb-0 fs-6 fs-sm-5">
-          {t('projects.description', 'Explore my featured projects and open-source contributions')}
+          {t('projects.description')}
         </p>
       </header>
 
@@ -121,7 +121,7 @@ export default function Projects(): ReactNode {
       <section className="mb-5">
         <h2 className="h4 mb-3">
           <i className="bi bi-star-fill me-2 text-warning" aria-hidden="true"></i>
-          {t('projects.featured', 'Featured Projects')}
+          {t('projects.featured')}
         </h2>
         <div className="row g-3 g-lg-4">
           {featuredProjects.map((project) => (
@@ -194,7 +194,7 @@ export default function Projects(): ReactNode {
       <section>
         <h2 className="h4 mb-3">
           <i className="bi bi-github me-2" aria-hidden="true"></i>
-          {t('projects.allRepos', 'All Repositories')}
+          {t('projects.allRepos')}
           {!loading && repos.length > 0 && ` (${repos.length})`}
         </h2>
 
@@ -202,7 +202,7 @@ export default function Projects(): ReactNode {
           <Card.Header className="p-2 p-sm-3">
             <h3 className="h6 h-sm-5 mb-0">
               <i className="bi bi-list me-1 me-sm-2" aria-hidden="true"></i>
-              {t('projects.repositoryList', 'Repository List')}
+              {t('projects.repositoryList')}
             </h3>
           </Card.Header>
           <ListGroup variant="flush">
