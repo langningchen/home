@@ -13,7 +13,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "create-article": "node scripts/create-article.js"
   },
   "dependencies": {
     "@babel/core": "^7.26.10",

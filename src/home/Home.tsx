@@ -20,8 +20,8 @@ class Home extends Component<WithTranslation> {
         </div>
         <div className="d-flex justify-content-between gap-5 pb-3">
           <div className="flex-grow-1">
-            <div className="fs-4">{t('name.part1')}</div>
-            <div className="fs-1 name">{t('name.part2')}</div>
+            <div className="fs-4">{t('greeting')}</div>
+            <div className="fs-1 name">Langning Chen</div>
             <ReactTyped className="fs-2"
               strings={[
                 t('role.option1'),
@@ -39,7 +39,7 @@ class Home extends Component<WithTranslation> {
             <Image src="/avatar.jpg" rounded className="w-100" />
           </div>
         </div>
-        <div className="d-flex gap-5 align-items-center text-truncate flex-md-shrink-0 flex-shrink-1 pb-3">
+        <div className="d-flex gap-5 align-items-center text-truncate flex-md-shrink-0 flex-shrink-0 pb-3">
           <SocialMedia />
         </div>
         <Fade triggerOnce>
