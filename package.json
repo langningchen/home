@@ -54,6 +54,6 @@
     "vite": "^6.2.7",
     "vite-imagetools": "^7.0.5",
     "vite-plugin-markdown": "^2.2.0",
-    "wrangler": "^4.10.0"
+    "wrangler": "^4.59.1"
   }
 }
