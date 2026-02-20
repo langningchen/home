@@ -51,7 +51,7 @@
     "globals": "^16.0.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.29.1",
-    "vite": "^6.2.7",
+    "vite": "^6.4.1",
     "vite-imagetools": "^7.0.5",
     "vite-plugin-markdown": "^2.2.0",
     "wrangler": "^4.59.1"
