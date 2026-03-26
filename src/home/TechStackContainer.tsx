@@ -1,7 +1,7 @@
-import { Component, ReactNode } from "react"
-import { Tab, Tabs } from "react-bootstrap"
-import TechStack from "./TechStack"
-import * as si from "simple-icons"
+import { Component, ReactNode } from "react";
+import { Tab, Tabs } from "react-bootstrap";
+import TechStack from "./TechStack";
+import * as si from "simple-icons";
 
 export default class TechStackContainer extends Component {
     render(): ReactNode {
@@ -63,11 +63,10 @@ export default class TechStackContainer extends Component {
                     </Tab>
                     <Tab eventKey="interest" title="Interests">
                         <TechStack icon={si.siMihoyo} />
-                        <TechStack icon={si.siOpenai} />
                         <TechStack icon={si.siStarship} />
                     </Tab>
                 </Tabs>
             </>
-        )
+        );
     }
 }
